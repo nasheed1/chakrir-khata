@@ -6,126 +6,106 @@
 <title>চাকরির খাতা — সরকারি চাকরির আবেদনের হিসাব</title>
 <style>
   :root{
-    /* brand (Library identity — unchanged) */
     --bg:#f7f2e7; --paper:#fffdf6; --ink:#38352f; --muted:#7a7261;
     --brick:#9e3a2e; --brick-d:#7c2c22; --amber:#c98a2d;
     --line:#e2d7bf; --soft:#fdf3ec; --soft-amber:#fbf3df;
-    /* semantic state tokens (ui-ux-pro-max: color-semantic) */
-    --success-bg:#eef4e4; --success-ink:#4d6428; --success-line:#cfdfae;
-    --warn-bg:#fbf3df; --warn-ink:#8a5f14; --warn-line:#ecd9a8;
-    --due-bg:#fdf3ec; --due-ink:#7c2c22; --due-line:#eec9c0;
-    /* spacing scale — 4pt rhythm (spacing-scale) */
-    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
-    /* elevation ladder (elevation-consistent) */
-    --e1:0 1px 2px rgba(90,60,20,.05), 0 4px 14px rgba(90,60,20,.06);
-    --e2:0 2px 4px rgba(90,60,20,.06), 0 10px 24px rgba(90,60,20,.10);
-    --e3:0 18px 50px rgba(60,30,10,.28);
-    --shadow:var(--e1);
-    --z-modal:50;
+    --shadow:0 4px 18px rgba(90,60,20,.07);
   }
   html{box-sizing:border-box}
   *,*::before,*::after{box-sizing:inherit}
   body{
     margin:0; background:var(--bg); color:var(--ink);
     font-family:'Hind Siliguri','Noto Sans Bengali',system-ui,-apple-system,'Segoe UI',sans-serif;
-    line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1080px; margin:0 auto; padding:var(--s5) 20px 48px}
-  @media (min-width:900px){ .wrap{padding:var(--s6) var(--s5) 56px} }
+  .wrap{max-width:1080px; margin:0 auto; padding:20px 16px 40px}
 
   /* ---------- header ---------- */
-  header.top{display:flex; align-items:center; gap:var(--s4); margin:var(--s2) 0 var(--s5)}
+  header.top{display:flex; align-items:center; gap:14px; margin:6px 0 18px}
   .logo{
-    width:56px; height:56px; flex:0 0 56px; border-radius:16px;
+    width:54px; height:54px; flex:0 0 54px; border-radius:16px;
     background:var(--brick); display:flex; align-items:center; justify-content:center;
-    box-shadow:var(--e2);
+    box-shadow:var(--shadow);
   }
   .logo svg{width:30px; height:30px; stroke:#fff; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
-  header.top h1{margin:0; font-size:28px; line-height:1.2; color:var(--brick-d)}
-  header.top p{margin:var(--s1) 0 0; font-size:14px; line-height:1.5; color:var(--muted)}
+  header.top h1{margin:0; font-size:27px; line-height:1.15; color:var(--brick-d)}
+  header.top p{margin:2px 0 0; font-size:14px; color:var(--muted)}
 
   /* ---------- summary ---------- */
-  .summary{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s3); margin-bottom:var(--s5)}
+  .summary{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:18px}
   .stat{
     background:var(--paper); border:1px solid var(--line); border-radius:18px;
-    padding:var(--s4); box-shadow:var(--e1);
+    padding:14px 16px; box-shadow:var(--shadow);
   }
-  .stat .num{font-size:28px; font-weight:700; line-height:1.15; color:var(--ink); font-variant-numeric:tabular-nums}
-  .stat .lbl{font-size:13px; line-height:1.45; color:var(--muted); margin-top:var(--s1)}
-  .stat .sub{font-size:12.5px; line-height:1.45; color:var(--muted); margin-top:3px}
-  .stat.alert{border-color:var(--due-line)}
+  .stat .num{font-size:26px; font-weight:700; line-height:1.1; color:var(--ink)}
+  .stat .lbl{font-size:13px; line-height:1.4; color:var(--muted); margin-top:2px}
+  .stat .sub{font-size:12.5px; line-height:1.4; color:var(--muted); margin-top:3px}
   .stat.alert .num{color:var(--brick)}
-  @media (max-width:400px){ .stat{padding:var(--s3)} .stat .num{font-size:24px} }
 
   /* ---------- toolbar ---------- */
-  .toolbar{display:flex; align-items:center; justify-content:space-between; gap:var(--s3); margin:var(--s2) 0 var(--s4)}
-  .toolbar .count{font-size:14px; color:var(--muted)}
+  .toolbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:4px 0 14px}
+  .toolbar .count{font-size:14.5px; color:var(--muted)}
   .btn{
     appearance:none; border:1px solid var(--brick); background:var(--brick); color:#fff;
     font:inherit; font-weight:600; font-size:15px; line-height:1; border-radius:12px;
-    padding:16px 18px 12px; cursor:pointer; display:inline-flex; align-items:center; gap:var(--s2);
-    white-space:nowrap; flex:0 0 auto; touch-action:manipulation;
-    transition:background-color .15s ease, transform .1s ease, filter .15s ease;
+    padding:12px 16px 8px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+    white-space:nowrap; flex:0 0 auto;
   }
   .btn svg{width:17px; height:17px; stroke:#fff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; position:relative; top:-2px}
   .btn:active{transform:scale(.98)}
   .btn.ghost{background:transparent; color:var(--brick)}
   .btn.ghost svg{stroke:var(--brick)}
-  .btn.small{padding:14px 14px 6px; font-size:13.5px; border-radius:10px}
+  .btn.small{padding:10px 12px 4px; font-size:13.5px; border-radius:10px}
   .btn.small svg{position:relative; top:-3px}
   .btn.plain{border-color:var(--line); background:var(--paper); color:var(--ink)}
   .btn.plain svg{stroke:var(--ink)}
 
   /* ---------- cards ---------- */
-  .cards{display:grid; grid-template-columns:1fr; gap:var(--s4)}
-  @media (min-width:900px){ .cards{grid-template-columns:1fr 1fr; gap:20px} }
+  .cards{display:grid; grid-template-columns:1fr; gap:14px}
+  @media (min-width:900px){ .cards{grid-template-columns:1fr 1fr} }
   .card{
     background:var(--paper); border:1px solid var(--line); border-radius:18px;
-    padding:20px; box-shadow:var(--e1); position:relative;
+    padding:18px; box-shadow:var(--shadow); position:relative;
   }
-  @media (min-width:900px){ .card{padding:var(--s5)} }
-  .card.danger{border-color:var(--brick); box-shadow:0 0 0 1px var(--brick), var(--e1)}
-  .card h3{margin:0 0 2px; font-size:18px; line-height:1.35; padding-right:108px}
-  .card .org{font-size:14px; line-height:1.5; color:var(--muted); margin:0 0 var(--s2)}
-  .card .actions{position:absolute; top:var(--s4); right:var(--s4); display:flex; gap:var(--s2)}
+  .card.danger{border-color:var(--brick); box-shadow:0 0 0 1px var(--brick), var(--shadow)}
+  .card h3{margin:0 0 2px; font-size:18.5px; line-height:1.3; padding-right:76px}
+  .card .org{font-size:14px; color:var(--muted); margin:0 0 10px}
+  .card .actions{position:absolute; top:14px; right:14px; display:flex; gap:6px}
   .icon-btn{
-    appearance:none; width:44px; height:44px; border-radius:12px; cursor:pointer;
+    appearance:none; width:34px; height:34px; border-radius:10px; cursor:pointer;
     border:1px solid var(--line); background:var(--paper);
-    display:flex; align-items:center; justify-content:center; touch-action:manipulation;
-    transition:background-color .15s ease, transform .1s ease;
+    display:flex; align-items:center; justify-content:center;
   }
-  .icon-btn:active{transform:scale(.96)}
-  .icon-btn svg{width:17px; height:17px; stroke:var(--muted); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+  .icon-btn svg{width:16px; height:16px; stroke:var(--muted); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
   .icon-btn.del svg{stroke:var(--brick)}
 
-  .meta{display:flex; flex-direction:column; gap:var(--s2); margin:var(--s3) 0 var(--s2); font-size:15px; line-height:1.55}
-  .meta .row{display:flex; align-items:center; gap:var(--s2); flex-wrap:wrap}
-  .meta svg{width:16px; height:16px; flex:0 0 16px; stroke:var(--amber); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+  .meta{display:flex; flex-direction:column; gap:6px; margin:10px 0 4px; font-size:14.5px}
+  .meta .row{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .meta svg{width:15px; height:15px; flex:0 0 15px; stroke:var(--amber); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
   .meta .k{color:var(--muted)}
-  .meta .when{font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
+  .meta .when{font-weight:600; white-space:nowrap}
   .meta .when.hot{color:var(--brick)}
-  .note-line{font-size:14px; line-height:1.5; color:var(--muted); background:var(--bg); border-radius:10px; padding:10px var(--s3); margin-top:var(--s3)}
+  .note-line{font-size:14px; line-height:1.45; color:var(--muted); background:var(--bg); border-radius:10px; padding:8px 10px; margin-top:8px}
   .tag{
     font-size:12.5px; font-weight:600; border-radius:999px; padding:5px 10px;
     display:inline-flex; align-items:center; justify-content:center; line-height:1;
-    background:var(--warn-bg); color:var(--warn-ink); border:1px solid var(--warn-line);
+    background:var(--soft-amber); color:#8a5f14; border:1px solid #ecd9a8;
   }
-  .tag.paid{background:var(--success-bg); color:var(--success-ink); border-color:var(--success-line); padding-top:7px; padding-bottom:3px}
-  .tag.due{background:var(--due-bg); color:var(--due-ink); border-color:var(--due-line); padding-top:9px; padding-bottom:1px}
+  .tag.paid{background:#eef4e4; color:#4d6428; border-color:#cfdfae; padding-top:7px; padding-bottom:3px}
+  .tag.due{background:var(--soft); color:var(--brick-d); border-color:#eec9c0; padding-top:9px; padding-bottom:1px}
 
   /* fee banner */
   .fee-banner{
-    margin-top:var(--s4); border-radius:12px; padding:var(--s3) 14px;
-    background:var(--due-bg); border:1px solid var(--due-line);
-    display:flex; align-items:center; gap:var(--s3); flex-wrap:wrap;
+    margin-top:12px; border-radius:12px; padding:10px 12px;
+    background:var(--soft); border:1px solid #eec9c0;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
   }
-  .fee-banner .txt{font-size:15px; font-weight:600; line-height:1.4; color:var(--due-ink); flex:1 1 200px; font-variant-numeric:tabular-nums}
+  .fee-banner .txt{font-size:15px; font-weight:600; line-height:1.35; color:var(--brick-d); flex:1 1 200px}
   .fee-banner.urgent{background:var(--brick); border-color:var(--brick)}
   .fee-banner.urgent .txt{color:#fff}
   .fee-banner.overdue{background:var(--brick-d); border-color:var(--brick-d)}
   .fee-banner.overdue .txt{color:#fff}
-  .fee-banner .dot{width:10px; height:10px; border-radius:50%; background:var(--brick); flex:0 0 10px}
+  .fee-banner .dot{width:9px; height:9px; border-radius:50%; background:var(--brick); flex:0 0 9px}
   .fee-banner.urgent .dot,.fee-banner.overdue .dot{background:#fff; animation:pulse 1.1s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
   .fee-banner .btn{background:#fff; border-color:#fff; color:var(--brick-d)}
@@ -134,17 +114,15 @@
   .fee-banner:not(.urgent):not(.overdue) .btn svg{stroke:#fff}
 
   /* stepper */
-  .stepper{display:flex; flex-wrap:wrap; gap:var(--s2); margin-top:var(--s4)}
+  .stepper{display:flex; flex-wrap:wrap; gap:5px; margin-top:14px}
   .chip{
     appearance:none; font:inherit; font-size:12px; line-height:1;
-    padding:14px 12px 10px; border-radius:999px; cursor:pointer;
+    padding:7px 9px 5px; border-radius:999px; cursor:pointer;
     border:1px solid var(--line); background:var(--paper); color:var(--muted);
-    display:inline-flex; align-items:center; gap:6px; touch-action:manipulation;
-    transition:background-color .15s ease, border-color .15s ease, transform .1s ease;
+    display:inline-flex; align-items:center; gap:5px;
   }
-  .chip:active{transform:scale(.97)}
   .chip .n{
-    width:16px; height:16px; border-radius:50%; font-size:10px; font-weight:700;
+    width:15px; height:15px; border-radius:50%; font-size:10px; font-weight:700;
     display:inline-flex; align-items:center; justify-content:center;
     background:var(--bg); color:var(--muted); border:1px solid var(--line);
   }
@@ -152,76 +130,56 @@
   .chip.done .n{background:#fff; color:var(--brick); border-color:#fff}
   .chip.now{background:var(--soft); border-color:var(--brick); color:var(--brick-d); font-weight:700}
   .chip.now .n{background:var(--brick); color:#fff; border-color:var(--brick)}
-  .card .next-row{margin-top:var(--s4); padding-top:var(--s4); border-top:1px solid var(--line); display:flex; justify-content:flex-end}
-  .done-badge{font-size:13.5px; font-weight:700; line-height:1; color:var(--success-ink); display:inline-flex; align-items:center; gap:6px}
-  .done-badge svg{width:16px; height:16px; stroke:var(--success-ink); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+  .card .next-row{margin-top:12px; display:flex; justify-content:flex-end}
+  .done-badge{font-size:13.5px; font-weight:700; line-height:1; color:#4d6428; display:inline-flex; align-items:center; gap:6px}
+  .done-badge svg{width:16px; height:16px; stroke:#4d6428; fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
 
   /* empty state */
   .empty{
     background:var(--paper); border:1.5px dashed var(--line); border-radius:18px;
-    padding:48px var(--s5); text-align:center; color:var(--muted);
+    padding:38px 20px; text-align:center; color:var(--muted);
   }
-  .empty svg{width:84px; height:84px; padding:16px; background:var(--soft-amber); border-radius:50%; stroke:var(--amber); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round}
-  .empty h3{margin:var(--s4) 0 var(--s2); color:var(--ink); font-size:18px; line-height:1.35}
-  .empty p{margin:0 0 20px; font-size:15px; line-height:1.55}
+  .empty svg{width:52px; height:52px; stroke:var(--amber); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; margin-bottom:8px}
+  .empty h3{margin:4px 0 6px; color:var(--ink); font-size:18px}
+  .empty p{margin:0 0 16px; font-size:14.5px}
 
-  footer{margin-top:var(--s6); text-align:center; font-size:12.5px; color:var(--muted); line-height:1.7}
+  footer{margin-top:26px; text-align:center; font-size:12.5px; color:var(--muted); line-height:1.7}
 
   /* ---------- modal ---------- */
   .overlay{
     position:fixed; inset:0; background:rgba(56,40,20,.48);
     display:none; align-items:flex-start; justify-content:center;
-    padding:var(--s5) var(--s4); overflow-y:auto; z-index:var(--z-modal);
+    padding:18px 12px; overflow-y:auto; z-index:50;
   }
   .overlay.open{display:flex}
   .panel{
     background:var(--paper); border-radius:18px; width:100%; max-width:560px;
-    padding:var(--s5); box-shadow:var(--e3); margin:auto 0;
+    padding:22px; box-shadow:0 18px 50px rgba(60,30,10,.28); margin:auto 0;
   }
-  .panel h2{margin:0 0 var(--s1); font-size:20px; line-height:1.3; color:var(--brick-d)}
-  .panel .hint{margin:0 0 var(--s4); font-size:13.5px; line-height:1.5; color:var(--muted)}
-  .field{margin-bottom:var(--s4)}
-  .field label{display:block; font-size:14px; font-weight:600; margin-bottom:var(--s2)}
+  .panel h2{margin:0 0 4px; font-size:20px; color:var(--brick-d)}
+  .panel .hint{margin:0 0 14px; font-size:13.5px; color:var(--muted)}
+  .field{margin-bottom:13px}
+  .field label{display:block; font-size:14px; font-weight:600; margin-bottom:5px}
   .field label .opt{font-weight:400; color:var(--muted); font-size:12.5px}
   .field input,.field textarea{
     width:100%; font:inherit; font-size:15px; line-height:1.35; color:var(--ink);
-    border:1px solid var(--line); border-radius:10px; padding:var(--s3); background:#fff;
+    border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:#fff;
   }
   .field input:focus,.field textarea:focus{outline:2px solid var(--amber); outline-offset:0; border-color:var(--amber)}
-  .field input{padding:14px 12px 10px}
+  .field input{padding:12px 12px 8px}
   .field textarea{resize:vertical; min-height:58px}
-  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:var(--s3)}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
   @media (max-width:520px){ .grid2{grid-template-columns:1fr} }
   .checkline{display:flex; align-items:center; gap:9px; font-size:14.5px; line-height:1.35; font-weight:600; cursor:pointer}
-  .checkline input{width:20px; height:20px; accent-color:var(--brick)}
+  .checkline input{width:19px; height:19px; accent-color:var(--brick)}
   .now-btn{
     appearance:none; font:inherit; font-size:12.5px; font-weight:600; cursor:pointer;
     border:1px solid var(--line); background:var(--bg); color:var(--brick-d);
-    border-radius:999px; padding:13px 12px 5px; margin-top:var(--s2);
-    display:inline-flex; align-items:center; justify-content:center; line-height:1; touch-action:manipulation;
-    transition:background-color .15s ease, transform .1s ease;
+    border-radius:999px; padding:10px 11px 2px; margin-top:6px;
+    display:inline-flex; align-items:center; justify-content:center; line-height:1;
   }
-  .now-btn:active{transform:scale(.97)}
-  .form-actions{display:flex; gap:var(--s3); justify-content:flex-end; margin-top:var(--s5)}
+  .form-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:18px}
   .err{color:var(--brick); font-size:13.5px; font-weight:600; min-height:18px; margin:2px 0 0}
-
-  /* ---------- interaction states (focus-states, press-feedback, hover) ---------- */
-  .btn:focus-visible,.chip:focus-visible,.icon-btn:focus-visible,.now-btn:focus-visible{
-    outline:2px solid var(--amber); outline-offset:2px;
-  }
-  @media (hover:hover){
-    .btn:hover{filter:brightness(1.06)}
-    .btn.ghost:hover{background:var(--soft); filter:none}
-    .btn.plain:hover{background:var(--soft); filter:none}
-    .fee-banner .btn:hover{filter:brightness(.97)}
-    .icon-btn:hover{background:var(--bg)}
-    .chip:hover{border-color:var(--amber)}
-    .chip.done:hover,.chip.now:hover{border-color:var(--brick)}
-    .now-btn:hover{background:var(--soft-amber)}
-  }
-  @media (prefers-reduced-motion: reduce){
-    *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
-  }
 </style>
 </head>
 <body>
