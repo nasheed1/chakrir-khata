@@ -38,8 +38,8 @@
     padding:14px 16px; box-shadow:var(--shadow);
   }
   .stat .num{font-size:26px; font-weight:700; line-height:1.1; color:var(--ink)}
-  .stat .lbl{font-size:13px; color:var(--muted); margin-top:2px}
-  .stat .sub{font-size:12.5px; color:var(--muted); margin-top:3px}
+  .stat .lbl{font-size:13px; line-height:1.4; color:var(--muted); margin-top:2px}
+  .stat .sub{font-size:12.5px; line-height:1.4; color:var(--muted); margin-top:3px}
   .stat.alert .num{color:var(--brick)}
 
   /* ---------- toolbar ---------- */
@@ -47,15 +47,16 @@
   .toolbar .count{font-size:14.5px; color:var(--muted)}
   .btn{
     appearance:none; border:1px solid var(--brick); background:var(--brick); color:#fff;
-    font:inherit; font-weight:600; font-size:15px; border-radius:12px;
-    padding:10px 16px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+    font:inherit; font-weight:600; font-size:15px; line-height:1; border-radius:12px;
+    padding:12px 16px 8px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
     white-space:nowrap; flex:0 0 auto;
   }
-  .btn svg{width:17px; height:17px; stroke:#fff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
+  .btn svg{width:17px; height:17px; stroke:#fff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; position:relative; top:-2px}
   .btn:active{transform:scale(.98)}
   .btn.ghost{background:transparent; color:var(--brick)}
   .btn.ghost svg{stroke:var(--brick)}
-  .btn.small{padding:7px 12px; font-size:13.5px; border-radius:10px}
+  .btn.small{padding:10px 12px 4px; font-size:13.5px; border-radius:10px}
+  .btn.small svg{position:relative; top:-3px}
   .btn.plain{border-color:var(--line); background:var(--paper); color:var(--ink)}
   .btn.plain svg{stroke:var(--ink)}
 
@@ -84,13 +85,14 @@
   .meta .k{color:var(--muted)}
   .meta .when{font-weight:600; white-space:nowrap}
   .meta .when.hot{color:var(--brick)}
-  .note-line{font-size:14px; color:var(--muted); background:var(--bg); border-radius:10px; padding:8px 10px; margin-top:8px}
+  .note-line{font-size:14px; line-height:1.45; color:var(--muted); background:var(--bg); border-radius:10px; padding:8px 10px; margin-top:8px}
   .tag{
-    font-size:12.5px; font-weight:600; border-radius:999px; padding:2.5px 10px;
+    font-size:12.5px; font-weight:600; border-radius:999px; padding:5px 10px;
+    display:inline-flex; align-items:center; justify-content:center; line-height:1;
     background:var(--soft-amber); color:#8a5f14; border:1px solid #ecd9a8;
   }
-  .tag.paid{background:#eef4e4; color:#4d6428; border-color:#cfdfae}
-  .tag.due{background:var(--soft); color:var(--brick-d); border-color:#eec9c0}
+  .tag.paid{background:#eef4e4; color:#4d6428; border-color:#cfdfae; padding-top:7px; padding-bottom:3px}
+  .tag.due{background:var(--soft); color:var(--brick-d); border-color:#eec9c0; padding-top:9px; padding-bottom:1px}
 
   /* fee banner */
   .fee-banner{
@@ -98,7 +100,7 @@
     background:var(--soft); border:1px solid #eec9c0;
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
   }
-  .fee-banner .txt{font-size:15px; font-weight:600; color:var(--brick-d); flex:1 1 200px}
+  .fee-banner .txt{font-size:15px; font-weight:600; line-height:1.35; color:var(--brick-d); flex:1 1 200px}
   .fee-banner.urgent{background:var(--brick); border-color:var(--brick)}
   .fee-banner.urgent .txt{color:#fff}
   .fee-banner.overdue{background:var(--brick-d); border-color:var(--brick-d)}
@@ -115,7 +117,7 @@
   .stepper{display:flex; flex-wrap:wrap; gap:5px; margin-top:14px}
   .chip{
     appearance:none; font:inherit; font-size:12px; line-height:1;
-    padding:6px 9px; border-radius:999px; cursor:pointer;
+    padding:7px 9px 5px; border-radius:999px; cursor:pointer;
     border:1px solid var(--line); background:var(--paper); color:var(--muted);
     display:inline-flex; align-items:center; gap:5px;
   }
@@ -129,7 +131,7 @@
   .chip.now{background:var(--soft); border-color:var(--brick); color:var(--brick-d); font-weight:700}
   .chip.now .n{background:var(--brick); color:#fff; border-color:var(--brick)}
   .card .next-row{margin-top:12px; display:flex; justify-content:flex-end}
-  .done-badge{font-size:13.5px; font-weight:700; color:#4d6428; display:inline-flex; align-items:center; gap:6px}
+  .done-badge{font-size:13.5px; font-weight:700; line-height:1; color:#4d6428; display:inline-flex; align-items:center; gap:6px}
   .done-badge svg{width:16px; height:16px; stroke:#4d6428; fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
 
   /* empty state */
@@ -160,19 +162,21 @@
   .field label{display:block; font-size:14px; font-weight:600; margin-bottom:5px}
   .field label .opt{font-weight:400; color:var(--muted); font-size:12.5px}
   .field input,.field textarea{
-    width:100%; font:inherit; font-size:15px; color:var(--ink);
+    width:100%; font:inherit; font-size:15px; line-height:1.35; color:var(--ink);
     border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:#fff;
   }
   .field input:focus,.field textarea:focus{outline:2px solid var(--amber); outline-offset:0; border-color:var(--amber)}
+  .field input{padding:12px 12px 8px}
   .field textarea{resize:vertical; min-height:58px}
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
   @media (max-width:520px){ .grid2{grid-template-columns:1fr} }
-  .checkline{display:flex; align-items:center; gap:9px; font-size:14.5px; font-weight:600; cursor:pointer}
+  .checkline{display:flex; align-items:center; gap:9px; font-size:14.5px; line-height:1.35; font-weight:600; cursor:pointer}
   .checkline input{width:19px; height:19px; accent-color:var(--brick)}
   .now-btn{
     appearance:none; font:inherit; font-size:12.5px; font-weight:600; cursor:pointer;
     border:1px solid var(--line); background:var(--bg); color:var(--brick-d);
-    border-radius:999px; padding:4px 11px; margin-top:6px;
+    border-radius:999px; padding:10px 11px 2px; margin-top:6px;
+    display:inline-flex; align-items:center; justify-content:center; line-height:1;
   }
   .form-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:18px}
   .err{color:var(--brick); font-size:13.5px; font-weight:600; min-height:18px; margin:2px 0 0}
